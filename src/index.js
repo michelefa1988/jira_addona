@@ -1,9 +1,6 @@
 var request = require('request');
 require('dotenv').config()
-
-// var login = require('./src/Login.js');
-// var issues = require('./src/GetIssues.js');
-// var ExportToPDF = require('./src/ExportToPDF');
+var ExportToPDF = require('./ExportToPDF');
 //var CompareChanges = require('./CompareChanges.js');
 // var conf = require('./src/config.js');
 
@@ -42,49 +39,28 @@ function HelpNeeded() {
     return false;
 }
 
-var jira = require('./jira.js');
-jira.getIssues( function(cb){
-    console.log(cb);
-  });
-
-
-
-
 //if help flag is mot needed -> begin processeing
 if (!HelpNeeded()) {
     console.log("Help is not needed")
+    var jira = require('./jira.js');
+    jira.getIssues( function(cb){
+        console.log(cb);
 
-    //jira.logon(function(err, setcookie) {
-    //     if (!err) {
-    //         var options = {
-    //             url: 'https://zettabox.myjetbrains.com/youtrack/rest/admin/project',
-    //             headers: {
-    //                 'Cookie': setcookie.join(" ; "),
-    //             }
-    //         };
-    //         var ticketsArr = [];
-    //         issues.getIssues(function(error, ticketsArr) {
-    //             console.log("********CALLBACK*********************");
-
-
-    //             //if changes parameter is present
-    //             if (process.argv.indexOf("-changes") != -1) {
-    //                  CompareChanges.processChanges(function(cb) {
-    //                    ArrayToExport = cb;
-    //                    ExportToPDF.writetoPDF(true);
-    //                  });
-    //             }
-    //             else {
-    //               ArrayToExport = ticketsArr;
-    //               ExportToPDF.writetoPDF(false);
-    //             }
-    //             if (process.argv.indexOf("-print") != -1) {
-    //               LaunchPrintScript();
-
-    //             }
-    //         });
-    //     }
-     //});
+        //if changes parameter is present
+        if (process.argv.indexOf("-changes") != -1) {
+                        CompareChanges.processChanges(function(cb) {
+                        ArrayToExport = cb;
+                        ExportToPDF.writetoPDF(true);
+                        });
+        }
+        else {
+                    ArrayToExport = cb;
+                    ExportToPDF.writetoPDF(false);
+        }
+        if (process.argv.indexOf("-print") != -1) {
+                    LaunchPrintScript();
+        }
+    });
 }
 
-//exports.ArrayToExport = ArrayToExport;
+exports.ArrayToExport = ArrayToExport;
