@@ -3,8 +3,7 @@ var JiraClient = require("jira-connector");
 // Initialize
 var jira = new JiraClient({
   host: process.env.host,
-  //host: "support.netrefer.com",
-  strictSSL: true, // One of optional parameters
+  strictSSL: false, // One of optional parameters
   basic_auth: {
     username: process.env.email,
     password: process.env.password
@@ -13,16 +12,28 @@ var jira = new JiraClient({
 
 exports.getIssues = function getIssues(cb) {
     jira.search.search({
-      //jql: 'project = UMP AND issuetype in subTaskIssueTypes() AND assignee in ("michele.fenechadami@netrefer.com")'
+      jql: 'project = UMP AND issuetype in subTaskIssueTypes() AND assignee in ("michele.fenechadami@netrefer.com")'
       //jql: 'project = UMP AND issuetype in subTaskIssueTypes()'
-      jql: 'project = Michele'
+      //jql: 'project = Michele'
     }, (error, issue) => {
          console.log("siza : " +  issue.issues.length);
          console.log("TicketName : " +  issue.issues[1].key);
-         cb(issue.issues);
+
+         ticketsArr = [];
+
+         for (var i = 0; i <  issue.issues.length; i++) {
+            var ticket = [];
+            ticket[0]=issue.issues[i].key
+            ticket[1]=issue.issues[i].fields.assignee.displayName
+            ticket[2]=issue.issues[i].fields.status.name
+            ticket[3]=issue.issues[i].fields.issuetype.name
+            ticket[4]=issue.issues[i].fields.summary
+
+            ticketsArr.push(ticket);
+         }
+         cb(ticketsArr);
       }
     );
-     
   }
 
   // ES5
@@ -35,4 +46,3 @@ exports.getIssues = function getIssues(cb) {
       //console.log(issue.fields.summary);
     }
   );
-

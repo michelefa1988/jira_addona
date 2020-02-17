@@ -43,7 +43,6 @@ function HelpNeeded() {
 }
 
 var jira = require('./jira.js');
-//jira1 = new jira()
 jira.getIssues( function(cb){
     console.log(cb);
   });
