@@ -12,9 +12,7 @@ var jira = new JiraClient({
 
 exports.getIssues = function getIssues(cb) {
     jira.search.search({
-      jql: 'project = UMP AND issuetype in subTaskIssueTypes() AND assignee in ("michele.fenechadami@netrefer.com")'
-      //jql: 'project = UMP AND issuetype in subTaskIssueTypes()'
-      //jql: 'project = Michele'
+      jql: process.env.jql,
     }, (error, issue) => {
          console.log("siza : " +  issue.issues.length);
          console.log("TicketName : " +  issue.issues[1].key);
