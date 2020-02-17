@@ -67,11 +67,9 @@ module.exports = {
             var y = 0;
             var j = 0;
 
-            var tickets = ArrayToExport.slice();
+            var tickets = ArrayToExport.slice(); 
             createDirectory('./temp');
             while (tickets.length) {
-
-
             //     //map used for shortening project names
                 var ProjectAliases = {
                     ZettaBox_Web_NextGen: "nxtgn",
@@ -145,6 +143,8 @@ module.exports = {
                     //write QR image
                     // createQR(conf.YouTrack_Search_URL + page[ticketNo][conf.ticketID], page[ticketNo][conf.ticketID]);
                     // doc.image('temp/' + page[ticketNo][process.env.ticketID] + '.PNG', x + 100, (y * 260) + 198 , {width:50});
+
+                    console.log ( page[ticketNo][process.env.printed_tickets_center_bold] )
 
                     
                     ticketNo++;

@@ -14,8 +14,9 @@ exports.getIssues = function getIssues(cb) {
     jira.search.search({
       jql: process.env.jql,
     }, (error, issue) => {
-         console.log("siza : " +  issue.issues.length);
-         console.log("TicketName : " +  issue.issues[1].key);
+         console.log("Status");
+         console.log("Number of Tickets: " +  issue.issues.length);
+         console.log("***************************************");
 
          ticketsArr = [];
 
@@ -33,14 +34,3 @@ exports.getIssues = function getIssues(cb) {
       }
     );
   }
-
-  // ES5
-  jira.issue.getIssue(
-    {
-      issueKey: "MFA-1"
-      //issueKey: "UMP-677"
-    },
-    function(error, issue) {
-      //console.log(issue.fields.summary);
-    }
-  );

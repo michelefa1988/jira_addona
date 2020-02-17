@@ -1,8 +1,7 @@
 var request = require('request');
 require('dotenv').config()
 var ExportToPDF = require('./ExportToPDF');
-//var CompareChanges = require('./CompareChanges.js');
-// var conf = require('./src/config.js');
+var CompareChanges = require('./CompareChanges.js');
 
 
 ArrayToExport = [];
@@ -41,13 +40,10 @@ function HelpNeeded() {
 
 //if help flag is mot needed -> begin processeing
 if (!HelpNeeded()) {
-    console.log("Help is not needed")
     var jira = require('./jira.js');
     jira.getIssues( function(cb){
-        console.log(cb);
-
         //if changes parameter is present
-        if (process.argv.indexOf("-changes") != -1) {
+        if (process.argv.indexOf("--changes") != -1) {
                         CompareChanges.processChanges(function(cb) {
                         ArrayToExport = cb;
                         ExportToPDF.writetoPDF(true);
