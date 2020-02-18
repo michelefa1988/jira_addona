@@ -103,11 +103,14 @@ module.exports = {
                     if (page[ticketNo][process.env.printed_tickets_type] == "Bug") {
                         doc.fillAndStroke("#ffe6e6", "#200");
                     }
-                    if (page[ticketNo][process.env.printed_tickets_type] == "Technical") {
+                    if (page[ticketNo][process.env.printed_tickets_type] == "Technical Story") {
                         doc.fillAndStroke("#fff0b3", "#200");
                     }
-                    if (page[ticketNo][process.env.printed_tickets_type] == "DevOps Sub task") {
+                    if (page[ticketNo][process.env.printed_tickets_type] == "Story") {
                         doc.fillAndStroke("#ccffcc", "#200");
+                    }
+                    if (page[ticketNo][process.env.printed_tickets_type] == "Defect") {
+                            doc.fillAndStroke("#DB5F44", "#200");
                     } else {
                         doc.fillAndStroke("white", "#200");
                     }
@@ -145,7 +148,7 @@ module.exports = {
                     // doc.image('temp/' + page[ticketNo][process.env.ticketID] + '.PNG', x + 100, (y * 260) + 198 , {width:50});
 
                     console.log ( page[ticketNo][process.env.printed_tickets_center_bold] )
-
+                        //xxxx
                     
                     ticketNo++;
                     if (isLeft !== 0) {
