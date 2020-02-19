@@ -33,8 +33,6 @@ exports.getIssues = function getIssues(cb) {
             ticket[4]=issue.issues[i].fields.summary
             ticket[5]=process.env.sprint_number
 
-            //console.log(ticket)
-
             ticketsArr.push(ticket);
          }
          cb(ticketsArr);
