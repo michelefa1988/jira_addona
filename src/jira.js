@@ -31,12 +31,6 @@ exports.getIssues = function getIssues(cb) {
             ticket[2]=issue.issues[i].fields.status.name
             ticket[3]=issue.issues[i].fields.issuetype.name
             ticket[4]=issue.issues[i].fields.summary
-
-            // sprintField=String(issue.issues[i].fields.customfield_10006)
-            // index=sprintField.indexOf("UMP Core - Sprint");
-            // sprintCut=sprintField.substring(index+10,index+20);
-            // console.log (sprintCut)
-            // ticket[5]=issue.issues[i].fields.customfield_10006
             ticket[5]=process.env.sprint_number
 
             //console.log(ticket)
