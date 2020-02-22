@@ -1,0 +1,31 @@
+{
+  "name": "jira_essentialaddons",
+  "version": "1.0.0",
+  "main": "index.js",
+  "dependencies": {
+    "bluebird": "^3.4.0",
+    "dotenv": "^8.2.0",
+    "fonts": "^0.0.2",
+    "fs-extra": "^0.30.0",
+    "jira-connector": "^3.1.0",
+    "lokijs": "^1.4.1",
+    "node-rest-client": "^1.8.0",
+    "pdfkit": "^0.7.2",
+    "qr-image": "^3.1.0"
+  },
+  "scripts": {
+    "start": "node src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/michelefa1988/jira_addons"
+  },
+  "keywords": [],
+  "author": "Michele Fenech Adami",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/michelefa1988/jira_addons/issues"
+  },
+  "homepage": "https://github.com/michelefa1988/jira_addons#readme",
+  "description": "Printing of issue cards to place on the physical board (eg each card could contain ticket number, story points, description & Assignee). Each card is the size of a regular sticky note. Great tool for scrum masters!!\r * Useful for keeping track of progress"
+}
