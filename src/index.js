@@ -1,4 +1,3 @@
-var request = require('request');
 require('dotenv').config()
 var ExportToPDF = require('./ExportToPDF');
 var CompareChanges = require('./CompareChanges.js');

@@ -144,12 +144,11 @@ module.exports = {
                         .text(FullName[0], x + 10, (y * 260) + 10);
 
                     //write QR image
-                    // createQR(conf.YouTrack_Search_URL + page[ticketNo][conf.ticketID], page[ticketNo][conf.ticketID]);
+                    // createQR(process.env.jira_search_url + page[ticketNo][process.env.printed_tickets_center_bold]);
                     // doc.image('temp/' + page[ticketNo][process.env.ticketID] + '.PNG', x + 100, (y * 260) + 198 , {width:50});
 
                     console.log ( page[ticketNo][process.env.printed_tickets_center_bold] )
-                        //xxxx
-                    
+
                     ticketNo++;
                     if (isLeft !== 0) {
                         y++;
