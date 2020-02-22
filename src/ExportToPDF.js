@@ -1,4 +1,3 @@
-//var conf = require('./config.js');
 PDFDocument = require('pdfkit');
 fs = require('fs');
 
@@ -39,7 +38,7 @@ function createQR(url,filename) {
   var qr = require('qr-image');
 
   var qr_svg = qr.image(url, { type: 'png' });
-  fs.writeFileSync('temp/' + filename + '.png', qr.imageSync(url, { type: 'png' }));
+  fs.writeFileSync('./temp/' + filename + '.png', qr.imageSync(url, { type: 'png' }));
 }
 
 function createPDFDocument() {
@@ -144,8 +143,8 @@ module.exports = {
                         .text(FullName[0], x + 10, (y * 260) + 10);
 
                     //write QR image
-                    // createQR(process.env.jira_search_url + page[ticketNo][process.env.printed_tickets_center_bold]);
-                    // doc.image('temp/' + page[ticketNo][process.env.ticketID] + '.PNG', x + 100, (y * 260) + 198 , {width:50});
+                    createQR(process.env.jira_search_url + page[ticketNo][process.env.printed_tickets_center_bold],page[ticketNo][process.env.printed_tickets_center_bold]);
+                    doc.image('./temp/' + page[ticketNo][process.env.printed_tickets_center_bold] + '.png', x + 100, (y * 260) + 198 , {width:50});
 
                     console.log ( page[ticketNo][process.env.printed_tickets_center_bold] )
 
